@@ -328,7 +328,7 @@ int hashing(int *a, int **ht)
 	}
 
 	for(int i = 0; i < MAX_HASH_TABLE_SIZE; i++)
-		hashtable[i] = -1;
+		hashtable[i] = -1;	//hash table 값들을 -1로 리셋
 
 	/*
 	for(int i = 0; i < MAX_HASH_TABLE_SIZE; i++)
@@ -340,26 +340,26 @@ int hashing(int *a, int **ht)
 	int index = -1;
 	for (int i = 0; i < MAX_ARRAY_SIZE; i++)
 	{
-		key = a[i];
-		hashcode = hashCode(key);
+		key = a[i];			//배열의 i+1번째 원소로 키값 초기화
+		hashcode = hashCode(key);	//hashCode 함수를 호출하여 코드값 초기화
 		/*
 		printf("key = %d, hashcode = %d, hashtable[%d]=%d\n", key, hashcode, hashcode, hashtable[hashcode]);
 		*/
 		if (hashtable[hashcode] == -1)
 		{
-			hashtable[hashcode] = key;
-		} else 	{
+			hashtable[hashcode] = key;	//hash table 값이 -1인 경우 키값으로 초기화
+		} else 	{				//-1이 아닌 경우
 
 			index = hashcode;
 
 			while(hashtable[index] != -1)
 			{
-				index = (++index) % MAX_HASH_TABLE_SIZE;
+				index = (++index) % MAX_HASH_TABLE_SIZE;	//-1이 될때까지 탐색
 				/*
 				printf("index = %d\n", index);
 				*/
 			}
-			hashtable[index] = key;
+			hashtable[index] = key;		//탐색한 값을 키값으로 초기화
 		}
 	}
 
@@ -368,16 +368,16 @@ int hashing(int *a, int **ht)
 
 int search(int *ht, int key)
 {
-	int index = hashCode(key);
+	int index = hashCode(key);	//hashCode 함수를 호출하여 인덱스값 초기화
 
 	if(ht[index] == key)
-		return index;
+		return index;		//hash table에서 키값을 찾으면 그 인덱스 값을 리턴
 
-	while(ht[++index] != key)
+	while(ht[++index] != key)	//키값을 찾을때까지 반복
 	{
-		index = index % MAX_HASH_TABLE_SIZE;
+		index = index % MAX_HASH_TABLE_SIZE;	//인덱스 값을 hash table 크기로 나눈 나머지로 초기화
 	}
-	return index;
+	return index;			//인덱스 값 리턴
 }
 
 
