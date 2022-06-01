@@ -231,11 +231,11 @@ int bubbleSort(int *a)
 	{
 		for (j = 0; j < MAX_ARRAY_SIZE; j++)
 		{
-			if (a[j-1] > a[j])
+			if (a[j-1] > a[j])	//인접한 두 원소의 크기를 비교해서 앞쪽 원소의 크기가 더 큰 경우
 			{
 				t = a[j-1];
 				a[j-1] = a[j];
-				a[j] = t;
+				a[j] = t;	//두 원소의 자리를 바꿈
 			}
 		}
 	}
