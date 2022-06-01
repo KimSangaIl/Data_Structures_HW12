@@ -255,20 +255,20 @@ int shellSort(int *a)
 
 	printArray(a);
 
-	for (h = MAX_ARRAY_SIZE/2; h > 0; h /= 2)
+	for (h = MAX_ARRAY_SIZE/2; h > 0; h /= 2)	//간격은 최대원소 개수의 절반으로 설정하고 반복할때마다 그 값을 반으로 줄임
 	{
 		for (i = 0; i < h; i++)
 		{
-			for(j = i + h; j < MAX_ARRAY_SIZE; j += h)
+			for(j = i + h; j < MAX_ARRAY_SIZE; j += h)	//같은 간격으로 떨어져있는 원소들끼리 삽입 정렬
 			{
 				v = a[j];
 				k = j;
 				while (k > h-1 && a[k-h] > v)
 				{
 					a[k] = a[k-h];
-					k -= h;
+					k -= h;		//같은 간격을 가진 원소들을 부분집합으로 묶었을때 그 안에서 앞쪽으로 이동하면서 기준이 되는 원소를 삽입할 위치 탐색
 				}
-				a[k] = v;
+				a[k] = v;		//탐색한 위치에 기준으로 잡은 원소를 삽입
 			}
 		}
 	}
