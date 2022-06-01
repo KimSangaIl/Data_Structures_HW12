@@ -173,21 +173,21 @@ int selectionSort(int *a)
 	for (i = 0; i < MAX_ARRAY_SIZE; i++)
 	{
 		minindex = i;
-		min = a[i];
-		for(j = i+1; j < MAX_ARRAY_SIZE; j++)
+		min = a[i];	//i+1번째 자리를 기준으로 정함
+		for(j = i+1; j < MAX_ARRAY_SIZE; j++)	//기준으로 정한 자리부터 나머지 원소들을 하나씩 비교
 		{
 			if (min > a[j])
 			{
 				min = a[j];
-				minindex = j;
+				minindex = j;	//i+1번째 원소를 기준으로 나머지 원소들중 가장 작은 원소를 탐색
 			}
 		}
 		a[minindex] = a[i];
-		a[i] = min;
+		a[i] = min;			//탐색한 가장 작은 원소와 자리를 바꿈
 	}
 
 	printf("----------------------------------------------------------------\n");
-	printArray(a);
+	printArray(a);	//정렬 전후를 비교하기 위해 배열을 한 번더 출력
 	return 0;
 }
 
